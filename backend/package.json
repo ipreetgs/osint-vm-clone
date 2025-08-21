@@ -1,13 +1,20 @@
 {
   "name": "osint-backend",
   "version": "1.0.0",
-  "main": "server.js",
+  "type": "module",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "node server.js",
-    "start:dev": "NODE_ENV=dev node server.js",
-    "start:prod": "NODE_ENV=prod node server.js"
+    "build:dev": "babel src --out-dir dist/dev --copy-files --extensions \".js\"",
+    "build:prod": "babel src --out-dir dist/prod --copy-files --extensions \".js\"",
+    "start:dev": "NODE_ENV=development node dist/dev/server.js",
+    "start:prod": "NODE_ENV=production node dist/prod/server.js"
   },
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0"
   }
 }

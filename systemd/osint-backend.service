@@ -1,15 +1,15 @@
 [Unit]
-Description=OSINT Framework Backend
+Description=OSINT Backend Service
 After=network.target
 
 [Service]
-WorkingDirectory=/srv/osint/backend
-ExecStart=/usr/bin/node server.js
+Type=simple
+WorkingDirectory=/opt/osint-framework
+ExecStart=/usr/bin/node /opt/osint-framework/server.js
 Restart=always
-Environment=NODE_ENV=prod
-Environment=PORT=4000
 User=www-data
-Group=www-data
+Environment=NODE_ENV=production
+Environment=PORT=4000
 
 [Install]
 WantedBy=multi-user.target

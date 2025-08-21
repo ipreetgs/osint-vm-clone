@@ -1,0 +1,32 @@
+{
+  "id": "root",
+  "title": "OSINT Explorer (sample)",
+  "children": [
+    {
+      "id": "usernames",
+      "title": "Usernames",
+      "children": [
+        {
+          "id": "namechk",
+          "title": "Namechk",
+          "url": "https://namechk.com",
+          "tags": [
+            "R"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "emails",
+      "title": "Email",
+      "children": [
+        {
+          "id": "hibp",
+          "title": "HaveIBeenPwned",
+          "url": "https://haveibeenpwned.com",
+          "tags": []
+        }
+      ]
+    }
+  ]
+}

@@ -36,15 +36,19 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
+                      #!/usr/bin/env bash
                       set -euo pipefail
-                      echo "Building frontend (dev mode)..."
-                      cd frontend && npm ci && npm run build:dev
-
-                      echo "Copying build to backend/public..."
-                      rm -rf backend/public
-                      mkdir -p backend/public
-                      cp -r frontend/dist/* backend/public/
-                      echo "Installing backend production deps..."
-                      (cd backend && npm ci --production)
+                      echo "Building backend (dev)..."
+                      cd backend
+                      npm ci
+                      npx babel src --out-dir dist/dev --copy-files --extensions ".js"
+                      echo "Building frontend (dev)..."
+                      cd ../frontend
+                      npm ci
+                      npm run build:dev
+                      echo "Copying frontend build into backend dist/dev/public..."
+                      rm -rf ../backend/dist/dev/public || true
+                      mkdir -p ../backend/dist/dev/public
+                      cp -r dist/* ../backend/dist/dev/public/
                       echo "Dev build complete."
                   description: building frontend
